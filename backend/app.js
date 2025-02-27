@@ -11,7 +11,6 @@ const app = express();
 
 dotenv.config();
 
-const _dirname = path.resolve()
 
 app.use(cors());
 app.use(express.json());
@@ -33,10 +32,10 @@ app.use("/original/pets", originalpetRoute)
 app.use("/pets", petRoute);
 app.use("/user", userRoute);
 
-app.use(express.static(path.join(_dirname, "/frontend/dist")))
-app.get('*', (req, res)=>{
-  res.sendFile(path.resolve(_dirname,"frontend","dist","index.html"))
-})
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+});
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

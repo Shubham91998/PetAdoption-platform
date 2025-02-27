@@ -4,10 +4,10 @@
   "main": "backend/app.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon backend/app.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "node backend/app.js"
-  },
+  "dev": "nodemon backend/app.js",
+  "build": "npm install && cd frontend && npm install && npm run build",
+  "start": "node backend/app.js"
+},
   "author": "",
   "license": "ISC",
   "description": "",
