@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "name": "Buddy",
+    "breed": "Labrador",
+    "age": 3,
+    "type": "dog",
+    "category": "Adoptable",
+    "image": "https://example.com/images/labrador.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Max",
+    "breed": "German Shepherd",
+    "age": 5,
+    "type": "dog",
+    "category": "Adoptable",
+    "image": "https://example.com/images/german_shepherd.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Bella",
+    "breed": "Bulldog",
+    "age": 2,
+    "type": "dog",
+    "category": "Foster",
+    "image": "https://example.com/images/bulldog.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Charlie",
+    "breed": "Beagle",
+    "age": 4,
+    "type": "dog",
+    "category": "Rescue",
+    "image": "https://example.com/images/beagle.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Luna",
+    "breed": "Siamese",
+    "age": 2,
+    "type": "cat",
+    "category": "Adoptable",
+    "image": "https://example.com/images/siamese.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Oliver",
+    "breed": "Persian",
+    "age": 3,
+    "type": "cat",
+    "category": "Foster",
+    "image": "https://example.com/images/persian.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Milo",
+    "breed": "Maine Coon",
+    "age": 1,
+    "type": "cat",
+    "category": "Adoptable",
+    "image": "https://example.com/images/maine_coon.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Chloe",
+    "breed": "Bengal",
+    "age": 4,
+    "type": "cat",
+    "category": "Rescue",
+    "image": "https://example.com/images/bengal.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Rocky",
+    "breed": "Poodle",
+    "age": 6,
+    "type": "dog",
+    "category": "Adoptable",
+    "image": "https://example.com/images/poodle.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Daisy",
+    "breed": "Rottweiler",
+    "age": 3,
+    "type": "dog",
+    "category": "Foster",
+    "image": "https://example.com/images/rottweiler.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Lucy",
+    "breed": "British Shorthair",
+    "age": 5,
+    "type": "cat",
+    "category": "Adoptable",
+    "image": "https://example.com/images/british_shorthair.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Leo",
+    "breed": "Sphynx",
+    "age": 2,
+    "type": "cat",
+    "category": "Rescue",
+    "image": "https://example.com/images/sphynx.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Cooper",
+    "breed": "Dachshund",
+    "age": 4,
+    "type": "dog",
+    "category": "Adoptable",
+    "image": "https://example.com/images/dachshund.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Bailey",
+    "breed": "Boxer",
+    "age": 3,
+    "type": "dog",
+    "category": "Foster",
+    "image": "https://example.com/images/boxer.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Nala",
+    "breed": "Scottish Fold",
+    "age": 1,
+    "type": "cat",
+    "category": "Adoptable",
+    "image": "https://example.com/images/scottish_fold.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Simba",
+    "breed": "Norwegian Forest",
+    "age": 6,
+    "type": "cat",
+    "category": "Rescue",
+    "image": "https://example.com/images/norwegian_forest.jpg"
+  },
+  {
+    "id": 17,
+    "name": "T eddy",
+    "breed": "Chihuahua",
+    "age": 2,
+    "type": "dog",
+    "category": "Adoptable",
+    "image": "https://example.com/images/chihuahua.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Maggie",
+    "breed": "Shih Tzu",
+    "age": 5,
+    "type": "dog",
+    "category": "Foster",
+    "image": "https://example.com/images/shih_tzu.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Shadow",
+    "breed": "Russian Blue",
+    "age": 3,
+    "type": "cat",
+    "category": "Adoptable",
+    "image": "https://example.com/images/russian_blue.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Whiskers",
+    "breed": "American Shorthair",
+    "age": 4,
+    "type": "cat",
+    "category": "Rescue",
+    "image": "https://example.com/images/american_shorthair.jpg"
+  }
+]
