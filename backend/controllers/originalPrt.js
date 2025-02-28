@@ -53,9 +53,13 @@ const finddetails = async (req, res) => {
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
+    const dummy = await PetRequest.find({userId: userId}).populate("petId")
+    const pets = dummy.map(r=>r.petId)[0]
+    console.log(pets)
+    
 
-    const pets = await OriginalPet.find({ userid: userId });  // Fetch pets linked to the user
-    const petRequests = await PetRequest.find({ userId: userId }).populate("petId"); // Get full pet details
+
+    const petRequests = await PetRequest.find({ userId: userId }).populate("petId"); 
 
     res.json({ user, pets, petRequests });
   } catch (err) {

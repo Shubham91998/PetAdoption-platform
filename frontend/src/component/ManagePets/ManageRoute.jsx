@@ -14,7 +14,6 @@ const ManageRoute = () => {
         Choose an Application
       </h1>
       <div className="space-y-4">
-        {/* Link to Pet Post Application */}
         <Link
           to="/Manageallpet"
           className="bg-blue-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-blue-600 transition-all block text-center"
@@ -22,7 +21,6 @@ const ManageRoute = () => {
           Pet Post Application
         </Link>
 
-        {/* Link to Pet Adoption Application */}
         <Link
           to="/ManageallGet"
           className="bg-green-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-green-600 transition-all block text-center"

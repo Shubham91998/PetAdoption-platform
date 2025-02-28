@@ -12,11 +12,10 @@ function App() {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/original/pets/finddetails/${userId}`);
       console.log(response.data)
-      // Ensure pets and petRequests are always arrays
       setUserData({
         ...response.data,
-        pets: response.data.pets || [], // Default to empty array if undefined
-        petRequests: response.data.petRequests || [], // Default to empty array if undefined
+        pets: response.data.pets || [], 
+        petRequests: response.data.petRequests || [], 
       });
   
       setError("");
@@ -59,22 +58,22 @@ function App() {
           <p>
             <strong>Email:</strong> {userData.user.email}
           </p>
+          
 
           <h2>Pet Details</h2>
-{userData?.pets?.length > 0 ? (
-  userData.pets.map((pet, index) => (
-    <div key={index} style={{ marginBottom: "20px" }}>
-      <p><strong>Pet Name:</strong> {pet.name}</p>
-      <p><strong>Breed:</strong> {pet.breed}</p>
-      <p><strong>Age:</strong> {pet.age}</p>
-      <p><strong>Type:</strong> {pet.type}</p>
-      <p><strong>Category:</strong> {pet.category}</p>
-      <img src={pet.image} alt={pet.name} style={{ width: "200px" }} />
-    </div>
-  ))
+          {userData.pets && Object.keys(userData.pets).length > 0 ? (
+  <div style={{ marginBottom: "20px" }}>
+    <p><strong>Pet Name:</strong> {userData.pets.name}</p>
+    <p><strong>Breed:</strong> {userData.pets.breed}</p>
+    <p><strong>Age:</strong> {userData.pets.age}</p>
+    <p><strong>Type:</strong> {userData.pets.type}</p>
+    <p><strong>Category:</strong> {userData.pets.category}</p>
+    <img src={userData.pets.image} alt={userData.pets.name} style={{ width: "200px" }} />
+  </div>
 ) : (
-  <p>No pets found for this user.</p>
+  <p>No pet details available.</p>
 )}
+
 
 <h2>Pet Requests</h2>
 {userData?.petRequests?.length > 0 ? (

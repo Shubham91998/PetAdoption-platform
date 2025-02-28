@@ -9,7 +9,6 @@ const ManagePet = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch all pets from the database
   useEffect(() => {
     const fetchPets = async () => {
       try {
@@ -24,13 +23,11 @@ const ManagePet = () => {
     fetchPets();
   }, []);
 
-  // Function to handle adding a pet
   const handleAddPet = async (pet) => {
     try {
       const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/original/pets/addpet`, pet);
       if (res.status === 201) {
         toast.success("Pet added successfully!");
-        // Update the pets state with the new pet
         setPets([...pets, res.data]);
       }
     } catch (error) {
@@ -38,13 +35,11 @@ const ManagePet = () => {
     }
   };
 
-  // Function to handle deleting a pet
   const handleDeletePet = async (petId) => {
     try {
       const res = await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/pets/deletepet/${petId}`);
       if (res.status === 200) {
         toast.success("Pet deleted successfully!");
-        // Update the pets state by removing the deleted pet
         setPets(pets.filter((pet) => pet._id !== petId));
       }
     } catch (error) {
@@ -83,13 +78,13 @@ const ManagePet = () => {
               <div className="mt-4 flex justify-between">
                 <button
                   className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
-                  onClick={() => handleAddPet(pet)} // Call handleAddPet function
+                  onClick={() => handleAddPet(pet)} 
                 >
                   Add
                 </button>
                 <button
                   className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600"
-                  onClick={() => handleDeletePet(pet._id)} // Call handleDeletePet function
+                  onClick={() => handleDeletePet(pet._id)} 
                 >
                   Delete
                 </button>

@@ -22,7 +22,6 @@ const PetAdoptionRequests = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch pet adoption requests
   useEffect(() => {
     const fetchPetRequests = async () => {
       try {
@@ -38,7 +37,6 @@ const PetAdoptionRequests = () => {
     fetchPetRequests();
   }, []);
 
-  // Handle status update
   const handleUpdateStatus = async (id) => {
     if (!selectedStatus[id]) return alert("Please select a status!");
 
@@ -48,7 +46,6 @@ const PetAdoptionRequests = () => {
         { processStatus: selectedStatus[id] }
       );
 
-      // Update the status in the local state
       setPetRequests((prevRequests) =>
         prevRequests.map((request) =>
           request._id === id ? { ...request, processStatus: selectedStatus[id] } : request
@@ -68,6 +65,7 @@ const PetAdoptionRequests = () => {
   return (
     <>
     <div className="p-4">
+      
       <h1 className="text-2xl font-bold mt-20 mb-4">Pet Adoption Requests</h1>
       <table className="w-full border-collapse border border-gray-300">
         <thead>
