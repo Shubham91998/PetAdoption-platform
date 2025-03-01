@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Cards from './Cards';
 import { Link } from 'react-router-dom';
 import axios from "axios"
+import Loading from './Loding';
 
 const Availablepet = () => {
   const [pets, setPets] = useState([]);
@@ -9,7 +10,7 @@ const Availablepet = () => {
   const [error, setError] = useState(null);
   const [filterValues, setFilterValues] = useState({ breed: '', minAge: '', maxAge: '', petType: '' });
   const [availableBreeds, setAvailableBreeds] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchPets = async () => {
       try {
@@ -25,6 +26,16 @@ const Availablepet = () => {
 
     fetchPets();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <p>{error}</p>;
+  }
+
+
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
