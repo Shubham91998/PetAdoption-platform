@@ -15,12 +15,14 @@ const Availablepet = () => {
     const fetchPets = async () => {
       try {
         const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/original/pets/getallpet`);
-      
         setPets(res.data);
-        setFilteredPets(res.data); // Initialize with all pets by default
+        setFilteredPets(res.data);
+         // Initialize with all pets by default
       } catch (err) {
         setError(err.message);
-        console.error(err); // Log error for debugging
+        console.error(err);
+      }finally{
+        setLoading(false)
       }
     };
 
