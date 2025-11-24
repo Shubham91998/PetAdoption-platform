@@ -98,25 +98,24 @@ npm install
 
 ### Environment Variables
 
-### Create a .env file in the backend folder with the following variables:
+## Create a .env file in the backend folder with the following variables:
 
--PORT=5000
--MongoDBURI=YOUR_DATABASE_URL
--SECRET=YOUR_JWT_SECRET
+- PORT=5000
+- MongoDBURI=YOUR_DATABASE_URL
+- SECRET=YOUR_JWT_SECRET
 
--CLOUDINARY_CLOUD_NAME=YOUR_CLOUD_NAME
--CLOUDINARY_API_KEY=YOUR_API_KEY
--CLOUDINARY_API_SECRET=YOUR_API_SECRET
+- CLOUDINARY_CLOUD_NAME=YOUR_CLOUD_NAME
+- CLOUDINARY_API_KEY=YOUR_API_KEY
+- CLOUDINARY_API_SECRET=YOUR_API_SECRET
 
--ADMIN_SECRET_KEY=YOUR_ADMIN_KEY
--NODE_ENV=production
+- ADMIN_SECRET_KEY=YOUR_ADMIN_KEY
+- NODE_ENV=production
 
 
 ##  Keep secrets safe and do not commit .env to version control. Use environment settings in your cloud provider for production.
 
--Run Locally
-
--Start the backend:
+- Run Locally
+- Start the backend:
 ```
 cd backend
 npm start
@@ -132,10 +131,10 @@ npm run dev
 ```
 ### Deployment
 
--Frontend: Vercel (recommended for static React builds / Next.js)
--Backend: Railway (or any Node.js host)
--Database: MongoDB Atlas
--Images: Cloudinary
+- Frontend: Vercel (recommended for static React builds / Next.js)
+- Backend: Railway (or any Node.js host)
+- Database: MongoDB Atlas
+- Images: Cloudinary
 ```
 ## When deploying, set the same environment variables on your host (Railway/Vercel environment settings) instead of using local .env files.
 
@@ -143,21 +142,21 @@ npm run dev
 ```
 ### Planned features for upcoming releases:
 
--Advanced Home Verification System
--Upload home photos/videos
--AI-assisted suitability scoring (future integration)
--Automated Pet Health Checks
--Vaccination tracking
--Medical document uploads
--Age verification
--Real-Time Application Status Tracking
--Live status updates: Under Review, Approved, Rejected
--Chat System Between User & Admin
--Direct messaging for clarifications and document exchange
--Multi-Image Upload Optimization
--Cloudinary transformations for faster loading and responsive images
--Admin Dashboard 2.0
--Analytics, adoption statistics, and user trust scoring
+- Advanced Home Verification System
+- Upload home photos/videos
+- AI-assisted suitability scoring (future integration)
+- Automated Pet Health Checks
+- Vaccination tracking
+- Medical document uploads
+- Age verification
+- Real-Time Application Status Tracking
+- Live status updates: Under Review, Approved, Rejected
+- Chat System Between User & Admin
+- Direct messaging for clarifications and document exchange
+- Multi-Image Upload Optimization
+- Cloudinary transformations for faster loading and responsive images
+- Admin Dashboard 2.0
+- Analytics, adoption statistics, and user trust scoring
 ```
 ## Contributing
 
@@ -173,6 +172,7 @@ npm run dev
 
 # Contact
 ```
--Project repository: https://github.com/kshubham5642/pet-adoption-platform
--Live site: https://pet-adoption-tan-six.vercel.app/
+- Project repository: https://github.com/kshubham5642/pet-adoption-platform
+- Live site: https://pet-adoption-tan-six.vercel.app/
 ```
+
