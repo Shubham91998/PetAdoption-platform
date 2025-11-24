@@ -1,86 +1,200 @@
 # Pet Adoption Platform
 
-Welcome to the **Pet Adoption Platform**, a web application designed to connect pet lovers with pets in need of a new home. This platform allows users to browse available pets, adopt pets, and even upload pets for adoption. Admins manage the adoption process, verify users, and ensure that all rules and guidelines are followed.
+A full-stack web application that connects pet lovers with pets in need of new homes. The platform enables browsing available pets, submitting adoption applications, and securely uploading pets for rehoming — all through a structured verification workflow to ensure safety, authenticity, and responsible adoptions.
 
-# Link to visit website
+🔗 Live Demo: https://pet-adoption-tan-six.vercel.app/
 
-https://pet-adoption-tan-six.vercel.app/
+---
 
-## Features
+## Table of Contents
+
+- [Key Features](#key-features)
+  - [User Features](#user-features)
+  - [Admin Features](#admin-features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Clone & Install](#clone--install)
+  - [Environment Variables](#environment-variables)
+  - [Run Locally](#run-locally)
+- [Deployment](#deployment)
+- [Project Roadmap / Next Version](#project-roadmap--next-version)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+---
+
+## Key Features
 
 ### User Features
-1. **Pet List**: Browse a list of available pets for adoption.
-2. **Adopt a Pet**: Click on the "Adopt" link to fill out an adoption form. The admin will validate the user and verify the adoption request.
-3. **Upload a Pet**: If a user wants to give their pet up for adoption, they can click the "Upload Pet" link, fill out a form, and submit it for admin verification.
-4. **Authentication**: Users can sign up, log in, and log out securely.
+1. **Browse Pets**  
+   - View pets with details: breed, age, location, health info, and adoption status.
+
+2. **Submit Adoption Application**  
+   - Select a pet and send an adoption application.
+   - Application enters an admin review workflow; only verified applicants are approved.
+
+3. **Upload a Pet for Adoption**  
+   - Users can upload pet photos and details (breed, age, health info, reason for rehoming).
+   - Uploaded listings remain pending until admin verification/approval.
+
+4. **Secure Authentication**  
+   - JWT-based authentication
+   - Protected routes
+   - Role-based access (regular users and admins)
 
 ### Admin Features
-1. **Manage Pets**: Admins can view and manage all pets uploaded by users.
-2. **Validate Users**: Admins verify user information when an adoption request is submitted.
-3. **Verify Rules**: Admins ensure that all adoption requests comply with the rules listed in the notification tab.
-4. **Add Pets to App**: If a pet and user are valid, the admin can add the pet to the app's pet list.
+1. **Manage Pet Listings**  
+   - View, verify, approve or reject user-submitted pet listings.
+
+2. **Validate Adoption Applications**  
+   - Review applicant background, home environment, and prior pet experience.
+   - Cross-check application details before approval.
+
+3. **Enforce Adoption Rules**  
+   - Ensure requests follow platform guidelines and notifications.
+
+4. **Approve or Reject Applications**  
+   - Approve suitable homes; reject unsuitable applications to protect pet welfare.
+
+---
 
 ## Tech Stack
 
-- **Frontend**: React
-- **Backend**: Node.js
-- **Database**: MongoDB
-- **Authentication**: JWT (JSON Web Tokens)
+| Layer       | Technology      |
+|-------------|-----------------|
+| Frontend    | React           |
+| Backend     | Node.js, Express|
+| Database    | MongoDB (Atlas) |
+| Image Store | Cloudinary      |
+| Auth        | JWT             |
+| Deployment  | Vercel (frontend), Railway (backend) |
+
+---
 
 ## Getting Started
 
 ### Prerequisites
+- Node.js (recommended v16+)
+- npm or yarn
+- MongoDB Atlas account or accessible MongoDB URI
+- Cloudinary account (for image uploads)
+- (Optional) Railway and Vercel accounts for deployment
 
-- Node.js and npm installed on your machine.
-- MongoDB installed and running.
+### Clone & Install
+```bash
+git clone https://github.com/kshubham5642/pet-adoption-platform.git
+cd pet-adoption-platform
 
-### Installation
+Install dependencies in both frontend and backend folders:
 
-1. **Clone the Repository**
-
-   ```sh
-   git clone https://github.com/kshubham5642-adoption-platform.git
-   cd pet-adoption-platform
-   ```
-
-Install Dependencies
-
-Navigate to both the client and server directories and install the required dependencies.
-
-```sh
-cd frontend || cd backend
+# from repo root
+cd backend
 npm install
-```
-### Create .env file in the server directory and add the following variables:
-```sh
-PORT = YOUR_PORT_NO
 
-MongoDBURI = YOUR_DATABASE_URL
+cd ../frontend
+npm install
 
-SECRET = YOUR_JWT_SECRET
+Environment Variables
 
-CLOUDINARY_CLOUD_NAME = YOUR_CLOUDINARY_NAME
-CLOUDINARY_API_KEY = YOUR_CLOUDINARY_KEY
-CLOUDINARY_API_SECRET = YOUR_CLOUDINARY_SECRET
+Create a .env file in the backend folder with the following variables:
 
-ADMIN_SECRET_KEY = YOUR_ADMIN_KEY
-NODE_ENV = production
+PORT=5000
+MongoDBURI=YOUR_DATABASE_URL
+SECRET=YOUR_JWT_SECRET
 
+CLOUDINARY_CLOUD_NAME=YOUR_CLOUD_NAME
+CLOUDINARY_API_KEY=YOUR_API_KEY
+CLOUDINARY_API_SECRET=YOUR_API_SECRET
 
-```
-
-
+ADMIN_SECRET_KEY=YOUR_ADMIN_KEY
+NODE_ENV=production
 
 
-### Start the backend server:
+Keep secrets safe and do not commit .env to version control. Use environment settings in your cloud provider for production.
 
-```
+Run Locally
+
+Start the backend:
+
+cd backend
 npm start
-```
-### Start the frontend server:
 
-```
+
+Start the frontend (development mode):
+
+cd frontend
 npm run dev
-```
 
 
+The frontend should point to your backend API base URL (check frontend config or .env for the API endpoint).
+
+Deployment
+
+Frontend: Vercel (recommended for static React builds / Next.js)
+
+Backend: Railway (or any Node.js host)
+
+Database: MongoDB Atlas
+
+Images: Cloudinary
+
+When deploying, set the same environment variables on your host (Railway/Vercel environment settings) instead of using local .env files.
+
+Project Roadmap / Next Version (Planned Enhancements)
+
+Planned features for upcoming releases:
+
+Advanced Home Verification System
+
+Upload home photos/videos
+
+AI-assisted suitability scoring (future integration)
+
+Automated Pet Health Checks
+
+Vaccination tracking
+
+Medical document uploads
+
+Age verification
+
+Real-Time Application Status Tracking
+
+Live status updates: Under Review, Approved, Rejected
+
+Chat System Between User & Admin
+
+Direct messaging for clarifications and document exchange
+
+Multi-Image Upload Optimization
+
+Cloudinary transformations for faster loading and responsive images
+
+Admin Dashboard 2.0
+
+Analytics, adoption statistics, and user trust scoring
+
+Contributing
+
+Fork the repo
+
+Create a feature branch (git checkout -b feature/YourFeature)
+
+Commit your changes (git commit -m "Add feature")
+
+Push to the branch (git push origin feature/YourFeature)
+
+Open a Pull Request
+
+Please follow the existing code style and add tests where possible.
+
+License
+
+This project can include an open source license of your choice (e.g., MIT). Add a LICENSE file to the repo and update this section accordingly.
+
+Contact
+
+Project repository: https://github.com/kshubham5642/pet-adoption-platform
+Live site: https://pet-adoption-tan-six.vercel.app/
