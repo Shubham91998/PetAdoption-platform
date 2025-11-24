@@ -86,8 +86,8 @@ A full-stack web application that connects pet lovers with pets in need of new h
 ```bash
 git clone https://github.com/kshubham5642/pet-adoption-platform.git
 cd pet-adoption-platform
-
-Install dependencies in both frontend and backend folders:
+```
+### Install dependencies in both frontend and backend folders:
 
 # from repo root
 cd backend
@@ -96,105 +96,83 @@ npm install
 cd ../frontend
 npm install
 
-Environment Variables
+### Environment Variables
 
-Create a .env file in the backend folder with the following variables:
+### Create a .env file in the backend folder with the following variables:
 
-PORT=5000
-MongoDBURI=YOUR_DATABASE_URL
-SECRET=YOUR_JWT_SECRET
+-PORT=5000
+-MongoDBURI=YOUR_DATABASE_URL
+-SECRET=YOUR_JWT_SECRET
 
-CLOUDINARY_CLOUD_NAME=YOUR_CLOUD_NAME
-CLOUDINARY_API_KEY=YOUR_API_KEY
-CLOUDINARY_API_SECRET=YOUR_API_SECRET
+-CLOUDINARY_CLOUD_NAME=YOUR_CLOUD_NAME
+-CLOUDINARY_API_KEY=YOUR_API_KEY
+-CLOUDINARY_API_SECRET=YOUR_API_SECRET
 
-ADMIN_SECRET_KEY=YOUR_ADMIN_KEY
-NODE_ENV=production
+-ADMIN_SECRET_KEY=YOUR_ADMIN_KEY
+-NODE_ENV=production
 
 
-Keep secrets safe and do not commit .env to version control. Use environment settings in your cloud provider for production.
+##  Keep secrets safe and do not commit .env to version control. Use environment settings in your cloud provider for production.
 
-Run Locally
+-Run Locally
 
-Start the backend:
-
+-Start the backend:
+```
 cd backend
 npm start
+```
 
-
-Start the frontend (development mode):
-
+### Start the frontend (development mode):
+```
 cd frontend
 npm run dev
+```
 
+### The frontend should point to your backend API base URL (check frontend config or .env for the API endpoint).
+```
+### Deployment
 
-The frontend should point to your backend API base URL (check frontend config or .env for the API endpoint).
+-Frontend: Vercel (recommended for static React builds / Next.js)
+-Backend: Railway (or any Node.js host)
+-Database: MongoDB Atlas
+-Images: Cloudinary
+```
+## When deploying, set the same environment variables on your host (Railway/Vercel environment settings) instead of using local .env files.
 
-Deployment
+### Project Roadmap / Next Version (Planned Enhancements)
+```
+### Planned features for upcoming releases:
 
-Frontend: Vercel (recommended for static React builds / Next.js)
+-Advanced Home Verification System
+-Upload home photos/videos
+-AI-assisted suitability scoring (future integration)
+-Automated Pet Health Checks
+-Vaccination tracking
+-Medical document uploads
+-Age verification
+-Real-Time Application Status Tracking
+-Live status updates: Under Review, Approved, Rejected
+-Chat System Between User & Admin
+-Direct messaging for clarifications and document exchange
+-Multi-Image Upload Optimization
+-Cloudinary transformations for faster loading and responsive images
+-Admin Dashboard 2.0
+-Analytics, adoption statistics, and user trust scoring
+```
+## Contributing
 
-Backend: Railway (or any Node.js host)
+1. Fork the repo
+2. Create a feature branch (git checkout -b feature/YourFeature)
+3. Commit your changes (git commit -m "Add feature")
+4. Push to the branch (git push origin feature/YourFeature)
+5. Open a Pull Request
+6. Please follow the existing code style and add tests where possible.
 
-Database: MongoDB Atlas
+# License
+-This project can include an open source license of your choice (e.g., MIT). Add a LICENSE file to the repo and update this section accordingly.
 
-Images: Cloudinary
-
-When deploying, set the same environment variables on your host (Railway/Vercel environment settings) instead of using local .env files.
-
-Project Roadmap / Next Version (Planned Enhancements)
-
-Planned features for upcoming releases:
-
-Advanced Home Verification System
-
-Upload home photos/videos
-
-AI-assisted suitability scoring (future integration)
-
-Automated Pet Health Checks
-
-Vaccination tracking
-
-Medical document uploads
-
-Age verification
-
-Real-Time Application Status Tracking
-
-Live status updates: Under Review, Approved, Rejected
-
-Chat System Between User & Admin
-
-Direct messaging for clarifications and document exchange
-
-Multi-Image Upload Optimization
-
-Cloudinary transformations for faster loading and responsive images
-
-Admin Dashboard 2.0
-
-Analytics, adoption statistics, and user trust scoring
-
-Contributing
-
-Fork the repo
-
-Create a feature branch (git checkout -b feature/YourFeature)
-
-Commit your changes (git commit -m "Add feature")
-
-Push to the branch (git push origin feature/YourFeature)
-
-Open a Pull Request
-
-Please follow the existing code style and add tests where possible.
-
-License
-
-This project can include an open source license of your choice (e.g., MIT). Add a LICENSE file to the repo and update this section accordingly.
-
-Contact
-
-Project repository: https://github.com/kshubham5642/pet-adoption-platform
-Live site: https://pet-adoption-tan-six.vercel.app/
+# Contact
+```
+-Project repository: https://github.com/kshubham5642/pet-adoption-platform
+-Live site: https://pet-adoption-tan-six.vercel.app/
+```
