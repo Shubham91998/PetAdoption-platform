@@ -102,6 +102,45 @@ web_modules/
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+
+# Build folders
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache
+.cache/
+.parcel-cache/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.temp
+
 # yarn v2
 .yarn/cache
 .yarn/unplugged

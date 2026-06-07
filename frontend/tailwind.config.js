@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -17,7 +17,8 @@ export default {
         '.no-scrollbar::-webkit-scrollbar': {
           display: 'none', /* For Chrome, Safari, Opera */
         },
-      })
+        
+      });
     },
   ],
   daisyui: {
@@ -31,3 +32,4 @@ export default {
     ],
   },
 };
+

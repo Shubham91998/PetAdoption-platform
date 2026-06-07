@@ -3,11 +3,16 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
-  base: "/",  // Ensures proper asset loading
-  server: {
-    historyApiFallback: true,  // Fixes React Router issues
-  },
+  base: "/",
   build: {
-    outDir: "dist",  // Ensures the correct build folder
-  }
+    outDir: "dist",
+  },
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': 'http://localhost:8001',
+      '/pets': 'http://localhost:8001',
+      '/original': 'http://localhost:8001',
+    },
+  },
 });

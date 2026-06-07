@@ -1,20 +1,20 @@
-import React from 'react'
-import { Route, Routes, useParams } from "react-router-dom";
+import React from 'react';
+import { Route, Routes, useParams } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import Home from "./home/Home";
-import Service from "./ServicePage/ServicesPage"
-import AllPet from './component/Pet/AllPet';
-import ProcessForm from './component/Process/ProcessForm';
-import Signup from './component/Signup';
-import ManageRoute from './component/ManagePets/ManageRoute';
-import AdoptionForm from './component/AdoptionForm';
-import Petreas from './component/delivered/Petreas';
-import ManagePet from './component/ManagePets/ManagePet';
-import PetpostAndGet from "./component/ManagePets/PetpostAndGet";
-import Process from './component/Process';
-import AdminRoutePro from "./component/AdminRoutePro"
-import About from "./component/About"
-
+import Home from './pages/HomePage.jsx';
+import Service from './pages/ServicesPage.jsx';
+import AllPet from './pages/AllPetsPage.jsx';
+import ProcessPage from './pages/ProcessPage.jsx';
+import Signup from './pages/SignupPage.jsx';
+import ManageRoute from './pages/ManageRoutePage.jsx';
+import AdoptionForm from './pages/AdoptionFormPage.jsx';
+import Petreas from './pages/PetRequestDetailsPage.jsx';
+import ManagePet from './pages/ManagePetPage.jsx';
+import PetpostAndGet from './pages/PetRequestsPage.jsx';
+import Process from './components/ProcessSection.jsx';
+import AdminRoutePro from './components/auth/AdminRoute.jsx';
+import About from './pages/AboutPage.jsx';
+import PetChatbot from './components/PetChatbot.jsx';
 
 function App() {
   const ProcessWrapper = () =>{
@@ -31,7 +31,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/Services' element={<Service/>}/>
         <Route path='/Availablepet' element={<AllPet/>}/>
-        <Route path='/Process' element={<ProcessForm/>}/>
+        <Route path='/Process' element={<ProcessPage/>}/>
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
         {/* <Route path='/PetManage' element={<ManageRoute/>}/> */}
@@ -46,6 +46,7 @@ function App() {
       
       </Routes>
       <Toaster />
+      <PetChatbot />
     </div>
     </>
   )
