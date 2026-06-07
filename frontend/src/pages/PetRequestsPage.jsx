@@ -38,7 +38,7 @@ const PetAdoptionRequests = () => {
     try {
       setLoading(true);
       const response = await axios.put(
-        `http://localhost:8001/pets/pet-requests/${id}/hide`,
+        `${import.meta.env.VITE_API_URL}/pets/pet-requests/${id}/hide`,
       );
 
       // Remove from UI immediately
@@ -67,7 +67,7 @@ const PetAdoptionRequests = () => {
     const fetchPetRequests = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8001/pets/api/pet-requests",
+          `${import.meta.env.VITE_API_URL}/pets/api/pet-requests`,
         );
         setPetRequests(response.data.data);
       } catch (error) {
@@ -87,7 +87,7 @@ const PetAdoptionRequests = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:8001/pets/pet-requests/${id}/update-status`,
+        `${import.meta.env.VITE_API_URL}/pets/pet-requests/${id}/update-status`,
         { processStatus: selected },
       );
 
@@ -226,7 +226,7 @@ const PetAdoptionRequests = () => {
     if (!petId) return alert("Unable to resolve pet ID for deletion.");
 
     try {
-      await axios.delete(`http://localhost:8001/original/pets/delete/${petId}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/original/pets/delete/${petId}`);
       setLookupMessage(`Pet ${petId} deleted from website.`);
       setLookupResult(null);
       setPetRequests((prevRequests) =>

@@ -10,7 +10,7 @@ function FindDetails() {
     e.preventDefault();
 
     try {
-      const response = await axios.get(`http://localhost:8001/original/pets/finddetails/${userId}`);
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/original/pets/finddetails/${userId}`);
       const data = response.data || {};
 
       setUserData({

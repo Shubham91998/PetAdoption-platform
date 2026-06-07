@@ -13,7 +13,7 @@ const ManagePet = () => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const res = await axios.get("http://localhost:8001/pets/allpets");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/pets/allpets`);
         setPets(res.data);
       } catch (error) {
         setError(error.message);
@@ -27,7 +27,7 @@ const ManagePet = () => {
   // Function to handle adding a pet
   const handleAddPet = async (pet) => {
     try {
-      const res = await axios.post("http://localhost:8001/original/pets/addpet", pet);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/original/pets/addpet`, pet);
       if (res.status === 201) {
         toast.success("Pet added successfully!");
         // Update the pets state with the new pet
@@ -41,7 +41,7 @@ const ManagePet = () => {
   // Function to handle deleting a pet
   const handleDeletePet = async (petId) => {
     try {
-      const res = await axios.delete(`http://localhost:8001/pets/deletepet/${petId}`);
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/pets/deletepet/${petId}`);
       if (res.status === 200) {
         toast.success("Pet deleted successfully!");
         // Update the pets state by removing the deleted pet

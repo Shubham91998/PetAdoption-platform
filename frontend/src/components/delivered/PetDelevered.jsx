@@ -61,7 +61,7 @@ const PetDelivered = () => {
         reasonForAdoption: formData.reasonForAdoption,
       };
 
-      const response = await axios.post("http://localhost:8001/pets/petrequest", dataToSend);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/pets/petrequest`, dataToSend);
       console.log("Response:", response.data);
       toast.success("Form submitted successfully!");
       navigate(from , {replace:true})

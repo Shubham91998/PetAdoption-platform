@@ -19,7 +19,7 @@ const NutritionChart = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:8001/user/create", userInfo);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/create`, userInfo);
       
       console.log("Response from server:", res.data);
       if (res.data) {

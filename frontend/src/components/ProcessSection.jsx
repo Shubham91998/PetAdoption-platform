@@ -20,7 +20,7 @@ const Process = () => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8001/pets/api/pet-requests/${userId}`
+          `${import.meta.env.VITE_API_URL}/pets/api/pet-requests/${userId}`
         );
 
         if (response.data.data) {

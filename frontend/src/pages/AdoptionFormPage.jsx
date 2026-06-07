@@ -54,7 +54,7 @@ const AdoptionForm = () => {
     formData.append("userid", userId);
   
     try {
-      const res = await axios.post("http://localhost:8001/pets/petpost", formData);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/pets/petpost`, formData);
       console.log(res.data);
       toast.success("Pet adoption request submitted successfully");
       navigate(from, { replace: true });

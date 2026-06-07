@@ -24,7 +24,7 @@ const Petlist = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8001/original/pets/getallpet")
+    fetch(`${import.meta.env.VITE_API_URL}/original/pets/getallpet`)
     .then((response) => {
       if (!response.ok){
         throw new Error("Failed to fetch data.")

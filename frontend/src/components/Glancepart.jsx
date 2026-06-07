@@ -11,8 +11,8 @@ useEffect(() => {
   const fetchPetCount = async () => {
     try {
       const [statsRes, petsRes] = await Promise.all([
-        axios.get("http://localhost:8001/pets/api/dashboard-stats"),
-        axios.get("http://localhost:8001/original/pets/getallpet"),
+        axios.get(`${import.meta.env.VITE_API_URL}/pets/api/dashboard-stats`),
+        axios.get(`${import.meta.env.VITE_API_URL}/original/pets/getallpet`),
       ]);
       setTotalPets(statsRes.data.data.totalApplications);
       setDogsAdopted(statsRes.data.data.totalAdopted);

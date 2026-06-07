@@ -67,7 +67,7 @@ const PetChatbot = () => {
 
     try {
       // Call AI API
-      const response = await axios.post('http://localhost:8001/api/ai/chat', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/chat`, {
         message: messageText
       });
 

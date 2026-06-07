@@ -29,7 +29,7 @@ const Signup = () => {
     };
 
     try {
-      const res = await axios.post('http://localhost:8001/user/signup', userInfo);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/user/signup`, userInfo);
       if (res.data) {
         toast.success('Signup Successful');
         localStorage.setItem('user', JSON.stringify(res.data.user)); // Save user data to localStorage

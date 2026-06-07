@@ -25,7 +25,7 @@ const Login = () => {
       secretKey: isAdmin ? data.secretKey : undefined, // Include secretKey only for admin
     };
 
-    await axios.post("http://localhost:8001/user/login", userInfo)
+    await axios.post(`${import.meta.env.VITE_API_URL}/user/login`, userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
