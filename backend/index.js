@@ -15,10 +15,21 @@ const aiRoutes = require("./routes/ai.routes");
 
 const app = express();
 
+const allowedOrigins = [
+  "https://pet-adoption-platform-six.vercel.app",
+];
+
 app.use(cors({
-  origin: "https://pet-adoption-tan-six.vercel.app",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
