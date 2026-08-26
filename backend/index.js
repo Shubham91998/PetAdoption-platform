@@ -27,6 +27,7 @@ const server = http.createServer(app);
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://pet-adoption-tan-six.vercel.app",
   "https://pet-adoption-platform-six.vercel.app",
 ];
 
