@@ -17,7 +17,7 @@ const Glancepart = () => {
       setIsLoading(true);
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/pets/api/pet-requests`
+          `${import.meta.env.VITE_BACKEND_URL || import.meta.env.VITE_API_URL || ''}/pets/api/pet-requests`
         );
         console.log("Fetched pet requests length:", res.data.length);
         const count = res.data.data?.length || 0;

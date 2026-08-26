@@ -14,7 +14,8 @@ const Availablepet = () => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/original/pets/getallpet`);
+        const apiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_BACKEND_URL || '';
+        const res = await axios.get(`${apiUrl}/original/pets/getallpet`);
         setPets(res.data);
         setFilteredPets(res.data);
          // Initialize with all pets by default
