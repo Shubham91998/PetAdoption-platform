@@ -3,10 +3,10 @@ import image from "../../public/img.jpeg";
 import { Link } from "react-router-dom";
 import Login from "./Login";
 import Logout from "./Logout";
-import { useAuth } from "./context/AuthProvider";
+import { useAuth } from "../hooks/useAuth.jsx";
 
 const Navbar = () => {
-  const [authUser, setAuthUser] = useAuth();
+  const { authUser, setAuthUser } = useAuth();
   
 
 

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Services = () => {
   const [activeLink, setActiveLink] = useState("");
+  const [pets, setPets] = useState([]);
 
   const serviceLinks = [
     { id: "pet-grooming", label: "🐕 Grooming Services", section: "grooming" },
@@ -28,6 +29,15 @@ const Services = () => {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+  // pet fetch from backend
+  React.useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/original/pets/getallpet`)
+      .then((response) => response.json())
+      .then((data) => setPets(data))
+      .catch((error) => console.error("Error fetching pets:", error));
+  }, []);
+
+
 
   return ( 
     <>
@@ -79,7 +89,7 @@ const Services = () => {
         {/* Quick Stats Banner */}
         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="bg-gradient-to-r from-orange-400 to-red-400 rounded-xl p-4 text-center text-white transform hover:scale-105 transition-all duration-300">
-            <div className="text-3xl font-bold">500+</div>
+            <div className="text-3xl font-bold">{pets.length}+</div>
             <div className="text-sm">Happy Pets</div>
           </div>
           <div className="bg-gradient-to-r from-green-400 to-teal-400 rounded-xl p-4 text-center text-white transform hover:scale-105 transition-all duration-300">
@@ -87,7 +97,7 @@ const Services = () => {
             <div className="text-sm">Emergency Care</div>
           </div>
           <div className="bg-gradient-to-r from-blue-400 to-indigo-400 rounded-xl p-4 text-center text-white transform hover:scale-105 transition-all duration-300">
-            <div className="text-3xl font-bold">15+</div>
+            <div className="text-3xl font-bold">{pets.length}+</div>
             <div className="text-sm">Expert Vets</div>
           </div>
           <div className="bg-gradient-to-r from-purple-400 to-pink-400 rounded-xl p-4 text-center text-white transform hover:scale-105 transition-all duration-300">

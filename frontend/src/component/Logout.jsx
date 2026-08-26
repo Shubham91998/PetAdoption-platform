@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
-import { useAuth } from "./context/AuthProvider";
+import { useAuth } from "../hooks/useAuth.jsx";
 
 const Logout = () => {
-  const [authUser, setAuthUser] = useAuth();
+  const { authUser, setAuthUser } = useAuth();
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));

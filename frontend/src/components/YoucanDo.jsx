@@ -21,7 +21,7 @@ const YoucanDo = () => {
             <div className="py-10 grid grid-cols-2 display sm:flex gap-5 md:justify-between">
                 <div className="column quarter">
                     <div className="blurb">
-                            <img className='h-56 w-56 rounded-sm' src="https://iadopt.in/wp-content/uploads/2020/02/iadopt-adopt-foster-a-pet-1.jpg" alt="Foster"/>
+                            <img className='h-56 w-56 rounded-sm' src="/image/dog1.jpg" alt="Foster"/>
                             <h2 className="mt-5 flex justify-center items-center bg-teal-400 rounded-md py-1 text-md hover:bg-teal-500 cursor-pointer">Foster</h2>
                        
                     </div>
@@ -30,7 +30,7 @@ const YoucanDo = () => {
                 <div className="column quarter">
                     <div className="blurb">
                     
-                        <img className='h-56 w-56 rounded-sm' src="https://iadopt.in/wp-content/uploads/2020/02/iadopt-volunteer-to-help-pets-get-adopted-1.jpg" alt="Volunteer"/>
+                        <img className='h-56 w-56 rounded-sm' src="/image/dog2.jpg" alt="Volunteer"/>
                         <h2 className="mt-5 flex justify-center items-center bg-teal-400 rounded-md py-1 text-md hover:bg-teal-500 cursor-pointer">Volunteer</h2>
                     
                     </div>
@@ -38,7 +38,7 @@ const YoucanDo = () => {
         
                 <div className="column quarter">
                     <div className="blurb">
-                        <img className='h-56 w-56 rounded-sm' src="https://iadopt.in/wp-content/uploads/2020/02/iadopt-Feed-the-needy-2.jpg" alt="Feed the Needy"/>
+                        <img className='h-56 w-56 rounded-sm' src="/image/dog3.jpg" alt="Feed the Needy"/>
                         <h2 className="mt-5 flex justify-center items-center bg-teal-400 rounded-md py-1 text-md hover:bg-teal-500 cursor-pointer">Feed the Needy</h2>
                         
                     </div>
@@ -46,7 +46,7 @@ const YoucanDo = () => {
         
                 <div className="column quarter">
                     <div className="blurb">
-                        <img className='h-56 w-56 rounded-sm' src="https://iadopt.in/wp-content/uploads/2020/02/donate-to-iadopt-1.jpg" alt="Donate"/>
+                        <img className='h-56 w-56 rounded-sm' src="/image/dog4.jpg" alt="Donate"/>
                         <h2 className="mt-5 flex justify-center items-center bg-teal-400 rounded-md py-1 text-md hover:bg-teal-500 cursor-pointer">Donate</h2>
                         
                     </div>
