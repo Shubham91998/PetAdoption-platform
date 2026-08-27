@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import toast from "react-hot-toast";
+import apiClient from "../services/apiClient";
 
 const Login = () => {
   const {
@@ -25,7 +25,7 @@ const Login = () => {
       secretKey: isAdmin ? data.secretKey : undefined, // Include secretKey only for admin
     };
 
-    await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, userInfo)
+    await apiClient.post("/user/login", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
