@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Footer from "../Footer";
+import Footer from '../../component/Footer'
 import Navbar from "../Navbar";
 import { toast } from "react-hot-toast";
 
