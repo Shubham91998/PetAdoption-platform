@@ -1,5 +1,5 @@
-const Pet = require("../models/pet.js");
-const PetRequest = require("../models/petAdoption.js");
+const Pet = require("../models/pet.model.js");
+const PetRequest = require("../models/petAdoption.model.js");
 const {uploadOnCloudinary} = require("../middleware/cloudnary.js");
 const { asyncHandler } = require("../middleware/asyncHandlar.js");
 

@@ -220,7 +220,7 @@ const Petlist = () => {
               </style>
               <Slider {...settings}>
                 {list.map((item) => (
-                  <div key={item.id} className="px-2 sm:px-3">
+                  <div key={item._id || item.id} className="px-2 sm:px-3">
                     <Cards item={item} />
                   </div>
                 ))}

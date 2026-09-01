@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
-const OriginalPet = require("../models/originalPet"); 
-const User = require("../models/user"); 
-const PetRequest = require("../models/petAdoption"); 
+const OriginalPet = require("../models/originalPet.model.js"); 
+const User = require("../models/user.model.js"); 
+const PetRequest = require("../models/petAdoption.model.js"); 
 
 // add a new pet to the database
 const addPet = async (req, res) => {

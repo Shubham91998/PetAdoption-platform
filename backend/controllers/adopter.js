@@ -1,4 +1,4 @@
-const PetRequest = require("../models/petAdoption.js");
+const PetRequest = require("../models/petAdoption.model.js");
 
 const getUserPetRequest = async (req, res) => {
   try {

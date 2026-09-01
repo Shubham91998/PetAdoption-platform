@@ -1,10 +1,10 @@
-const User = require("../models/user");
-const Nutrition = require("../models/nutrition");
+const User = require("../models/user.model.js");
+const Nutrition = require("../models/nutrition.model.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 
-const secret = process.env.SECRET || "$uperman@1234"; 
+const secret = process.env.ADMIN_SECRET_KEY || "123456"; 
 
 const signup = async (req, res) => {
   try {
@@ -17,7 +17,7 @@ const signup = async (req, res) => {
 
     
     if (userType === "admin") {
-      const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY; 
+      const ADMIN_SECRET_KEY = process.env.ADMIN_SECRET_KEY || "123456"; 
       if (secretKey !== ADMIN_SECRET_KEY) {
         return res.status(400).json({ message: "Invalid admin secret key" });
       }

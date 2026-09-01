@@ -13,6 +13,7 @@ const petRoute = require("./routes/pet.routes");
 const userRoute = require("./routes/user.routes");
 const originalpetRoute = require("./routes/originalpet.routes");
 const aiRoutes = require("./routes/ai.routes");
+const shelterRoutes = require("./routes/shelter.routes");
 
 // Grooming Routes (jab create kar lo)
 const providerRoutes = require("./routes/providerRoutes");
@@ -85,6 +86,7 @@ Google=${!!process.env.GOOGLE_API_KEY}`);
     app.use("/pets", petRoute);
     app.use("/user", userRoute);
     app.use("/api/ai", aiRoutes);
+    app.use("/api/shelters", shelterRoutes);
 
     // Grooming Marketplace Routes
     app.use("/api/providers", providerRoutes);

@@ -53,15 +53,15 @@ const Login = () => {
     <div>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
-          <form onSubmit={handleSubmit(onSubmit)} method="dialog">
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* Close modal button */}
-            <Link
-              to="/"
+            <button
+              type="button"
               className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
               onClick={() => document.getElementById("my_modal_3").close()}
             >
               ✕
-            </Link>
+            </button>
 
             <h3 className="font-bold text-lg">Login</h3>
 

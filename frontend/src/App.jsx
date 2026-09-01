@@ -32,6 +32,13 @@ import ProviderDashboard from './GroomingPage/ProviderDashboard.jsx';
 import UserBookings from './GroomingPage/UserBookings.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import UserDashboard from './GroomingPage/UserDashboard.jsx';
+
+// Shelter Connect Pages
+import ShelterLoginPage from './pages/ShelterLoginPage.jsx';
+import ShelterRegisterPage from './pages/ShelterRegisterPage.jsx';
+import ShelterProfilePage from './pages/ShelterProfilePage.jsx';
+import ShelterDashboardPage from './pages/ShelterDashboardPage.jsx';
+
 function App() {
   const ProcessWrapper = () => {
     const { status } = useParams();
@@ -124,6 +131,16 @@ function App() {
               <AdminProviderVerification />
             </ProtectedRoute>
           } />
+          
+          {/* ========== SHELTER CONNECT ROUTES ========== */}
+          
+          {/* Public Shelter Routes */}
+          <Route path="/shelter-login" element={<ShelterLoginPage />} />
+          <Route path="/shelter-register" element={<ShelterRegisterPage />} />
+          <Route path="/shelter/:shelterId" element={<ShelterProfilePage />} />
+          
+          {/* Protected Shelter Routes - Shelter login required */}
+          <Route path="/shelter-dashboard" element={<ShelterDashboardPage />} />
           
         </Routes>
         <Toaster />
