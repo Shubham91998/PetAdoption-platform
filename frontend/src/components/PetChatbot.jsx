@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { 
   MessageCircle, 
   X, 
@@ -11,6 +11,46 @@ import {
   Loader2
 } from 'lucide-react';
 import axios from 'axios';
+
+const renderInlineText = (text) => text.split(/(\*\*[^*]+\*\*)/g).map((part, index) => {
+  if (part.startsWith('**') && part.endsWith('**')) {
+    return <strong key={index} className="font-semibold text-gray-900">{part.slice(2, -2)}</strong>;
+  }
+
+  return part;
+});
+
+const renderAssistantContent = (content) => content.split(/\r?\n/).map((line, index) => {
+  const trimmedLine = line.trim();
+  const markdownHeadingMatch = trimmedLine.match(/^#{1,6}\s+(.+?)\s*#*$/);
+  const headingMatch = trimmedLine.match(/^\*\*(.+?)\*\*:?$/);
+  const bulletMatch = trimmedLine.match(/^(?:[-*•])\s+(.+)$/);
+  const numberedMatch = trimmedLine.match(/^\d+[.)]\s+(.+)$/);
+
+  if (!trimmedLine) {
+    return <div key={index} className="h-1" aria-hidden="true" />;
+  }
+
+  if (markdownHeadingMatch || headingMatch) {
+    return (
+      <h4 key={index} className="mt-3 mb-1 flex items-center gap-1.5 text-sm font-bold text-blue-700 first:mt-0">
+        <PawPrint className="h-3.5 w-3.5 shrink-0 text-blue-500" aria-hidden="true" />
+        <span>{renderInlineText((markdownHeadingMatch || headingMatch)[1])}</span>
+      </h4>
+    );
+  }
+
+  if (bulletMatch || numberedMatch) {
+    return (
+      <div key={index} className="flex gap-2 pl-1">
+        <span className="mt-0.5 font-semibold text-blue-500">{bulletMatch ? '•' : `${trimmedLine.match(/^\d+/)[0]}.`}</span>
+        <span className="min-w-0">{renderInlineText((bulletMatch || numberedMatch)[1])}</span>
+      </div>
+    );
+  }
+
+  return <p key={index} className="mb-1 last:mb-0">{renderInlineText(trimmedLine)}</p>;
+});
 
 const PetChatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,9 +107,19 @@ const PetChatbot = () => {
 
     try {
       // Call AI API
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/ai/chat`, {
-        message: messageText
-      });
+      const apiUrl = (import.meta.env.VITE_API_URL || 'http://localhost:8001').replace(/\/$/, '');
+      const response = await axios.post(`${apiUrl}/api/ai/chat`, {
+        message: messageText,
+        history: messages
+          .filter(message =>
+            (message.role === 'user' || message.role === 'assistant') &&
+            !message.isTyping &&
+            !message.isError &&
+            message.content
+          )
+          .slice(-12)
+          .map(message => ({ role: message.role, content: message.content }))
+      }, { withCredentials: true });
 
       // Remove typing indicator
       setMessages(prev => prev.filter(m => m.id !== typingId));
@@ -89,7 +139,9 @@ const PetChatbot = () => {
     } catch (error) {
       console.error('Chat error:', error.response?.data || error.message || error);
       setMessages(prev => prev.filter(m => m.id !== typingId));
-      const serverMessage = error.response?.status === 500
+      const serverMessage = error.response?.status === 400
+        ? (error.response.data?.content || 'Please enter a shorter pet-related question.')
+        : error.response?.status === 500
         ? '🐾 Sorry, the server is having trouble. Please try again shortly.'
         : '😅 Sorry, I\'m having trouble connecting. Please check your internet connection and try again.';
       setMessages(prev => [...prev, {
@@ -201,8 +253,8 @@ const PetChatbot = () => {
                         <Bot className="h-4 w-4 text-blue-600" />
                       </div>
                       <div className="flex-1 bg-white rounded-2xl rounded-tl-md px-4 py-2.5 shadow-sm">
-                        <div className="text-gray-800 text-sm whitespace-pre-wrap break-words leading-relaxed">
-                          {message.content}
+                        <div className="text-gray-800 text-sm break-words leading-relaxed">
+                          {renderAssistantContent(message.content)}
                         </div>
                       </div>
                     </div>
@@ -285,7 +337,7 @@ const PetChatbot = () => {
               </button>
             </div>
             <p className="text-center text-xs text-gray-400 mt-2">
-              🐾 PetPal AI • Powered by Gemini AI
+              🐾 PetPal AI • Powered by PawFect Pet Adoption Platform.
             </p>
           </div>
         </>

@@ -1,14 +1,18 @@
 require("dotenv").config();
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const PetRequest = require("../models/petAdoption.model.js");
+const { validateToken } = require("../services/auth.service.js");
 
 // Validate API Key
-if (!process.env.GOOGLE_API_KEY) {
-  throw new Error("GOOGLE_API_KEY is missing in .env file");
+if (!process.env.GOOGLE_API_KEY && !process.env.GEMINI_API_KEY) {
+  throw new Error("GOOGLE_API_KEY or GEMINI_API_KEY is missing in .env file");
 }
 
 // Initialize Gemini
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+const genAI = new GoogleGenerativeAI(
+  process.env.GOOGLE_API_KEY || process.env.GEMINI_API_KEY
+);
 
 const model = genAI.getGenerativeModel({ 
   model: "gemini-2.5-flash" // Update this string
@@ -57,23 +61,12 @@ Respond ONLY with:
 "🐾 I'm PetPal, your dedicated pet assistant. I can only help with pets, pet care, pet adoption, training, breeds, nutrition, and animal-related questions. Please ask me something about pets! ❤️"
 
 ADOPTION ASSISTANT:
-When users ask:
-- I want a pet
-- Suggest a dog
-- Which pet should I adopt?
-- Best pet for me?
-
-DO NOT immediately recommend a pet.
-
-Instead ask:
-1. Do you live in an apartment or house?
-2. How much time can you spend with a pet daily?
-3. Do you prefer active or calm pets?
-4. Do you have allergies?
-5. What is your monthly pet budget?
-6. Are you a first-time pet owner?
-
-Then recommend suitable pets with breed, category, and care requirements.
+- Answer the user's actual adoption or breed question directly.
+- Use details already provided in the conversation, such as home type, available time, allergies, experience, and preferences.
+- Ask only for a missing detail when it is genuinely needed; never repeat a question that was already answered.
+- Short replies such as "5 hour", "yes", or "I have allergies" are valid contextual answers. Interpret them using the previous messages.
+- When enough context is available, recommend suitable pets or breeds directly and briefly explain fit, exercise, grooming, health, and housing considerations.
+- Do not turn the conversation into a form, checklist, or decision tree.
 
 PET HEALTH:
 
@@ -117,33 +110,114 @@ PET HEALTH:
 
 - Never prescribe medications, dosages, antibiotics, injections, or treatments that should be determined by a veterinarian.
 
-- Present responses in this format:
+- Give a direct, conversational answer. Ask at most one focused follow-up question only when it materially changes the safety or usefulness of the answer.`;
 
-🐾 Possible Causes:
-...
+const ADOPTION_PROCESS = [
+  "Submit the adoption form for a pet with your current location and reason for adoption.",
+  "The application is reviewed by the adoption team (Under Review).",
+  "If required, a home visit is scheduled.",
+  "Meet the pet at a Meet-and-Greet.",
+  "Complete Reference Checks and the Adoption Agreement when requested.",
+  "Pay the Adoption Fee if the application is accepted.",
+  "Receive Post-Adoption Support and Follow-Up.",
+];
 
-🏠 Home Care:
-...
+const getOptionalUser = (req) => {
+  const authorization = req.headers.authorization;
+  const bearerToken = authorization?.startsWith("Bearer ")
+    ? authorization.slice(7)
+    : null;
+  const token = bearerToken || req.cookies?.token;
 
-⚠️ When to Visit a Vet:
-...
+  if (!token) return null;
 
-❓ Follow-up Questions:
-...`;
+  try {
+    return validateToken(token);
+  } catch (error) {
+    return null;
+  }
+};
+
+const getAdoptionContext = async (userId) => {
+  if (!userId) {
+    return "No signed-in user is available. Do not claim to know the user's application or pet details.";
+  }
+
+  const requests = await PetRequest.find({ userId, isVisible: true })
+    .sort({ createdAt: -1 })
+    .limit(5)
+    .populate("petId", "name type breed age category");
+
+  if (!requests.length) {
+    return "The signed-in user has no visible adoption applications in the database. Do not invent an application or status.";
+  }
+
+  return JSON.stringify(requests.map((request) => ({
+    pet: request.petId
+      ? {
+          name: request.petId.name,
+          type: request.petId.type,
+          breed: request.petId.breed,
+          age: request.petId.age,
+          category: request.petId.category,
+        }
+      : null,
+    status: request.status,
+    processStatus: request.processStatus,
+    submittedAt: request.createdAt,
+  })));
+};
 
 const handleChat = async (req, res) => {
   try {
-    const { message } = req.body;
+    const message = typeof req.body?.message === "string" ? req.body.message.trim() : "";
+    const history = Array.isArray(req.body?.history)
+      ? req.body.history
+          .filter((item) =>
+            item &&
+            (item.role === "user" || item.role === "assistant") &&
+            typeof item.content === "string" &&
+            item.content.trim()
+          )
+          .slice(-12)
+          .map((item) => `${item.role === "user" ? "User" : "PetPal"}: ${item.content.trim().slice(0, 1000)}`)
+          .join("\n")
+      : "";
 
-    if (!message || !message.trim()) {
+    if (!message) {
       return res.status(400).json({
         success: false,
         content: "Please enter a message."
       });
     }
 
+    if (message.length > 1000) {
+      return res.status(400).json({
+        success: false,
+        content: "Please keep your message under 1000 characters."
+      });
+    }
+
+    const user = getOptionalUser(req);
+    const adoptionContext = await getAdoptionContext(user?._id);
+
     const prompt = `
 ${SYSTEM_PROMPT}
+
+PLATFORM ADOPTION PROCESS (use this when explaining how to adopt):
+${ADOPTION_PROCESS.map((step, index) => `${index + 1}. ${step}`).join("\n")}
+
+DATABASE CONTEXT FOR THE SIGNED-IN USER:
+${adoptionContext}
+
+DATABASE RULES:
+- Treat the database context as the only source of truth for application status and pet details.
+- If the context has no application, say that no visible application was found and direct the user to submit one.
+- Never guess, fabricate, or expose another user's application data or application IDs.
+- Explain that the user can check the status from the application's adoption-status/dashboard area when asked how to check it.
+
+CONVERSATION HISTORY:
+${history || "No earlier messages."}
 
 User Question:
 ${message}
