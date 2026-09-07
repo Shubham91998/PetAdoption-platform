@@ -1,7 +1,7 @@
 // frontend/src/App.jsx
-import React from 'react';
+import { useEffect } from 'react';
 import { Route, Routes, useParams } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { SocketProvider } from './GroomingPage/context/SocketContext.jsx';
 import { useAuth } from './hooks/useAuth.jsx';
 
@@ -46,6 +46,31 @@ function App() {
   }
 
   const { authUser } = useAuth();
+
+  useEffect(() => {
+    toast.custom(
+      (toastInstance) => (
+        <div className="site-update-toast" role="status">
+          <div className="site-update-toast__sparkle" aria-hidden="true">✦</div>
+          <div className="site-update-toast__content">
+            <p className="site-update-toast__eyebrow">A little update from the creator</p>
+            <p className="site-update-toast__message">
+              This website is growing with care while Shubham Kumar keeps improving its functionality.
+            </p>
+          </div>
+          <button
+            className="site-update-toast__close"
+            type="button"
+            onClick={() => toast.dismiss(toastInstance.id)}
+            aria-label="Dismiss update"
+          >
+            ×
+          </button>
+        </div>
+      ),
+      { duration: 6500, position: 'top-right' }
+    );
+  }, []);
 
   return (
     <SocketProvider userId={authUser?._id}>

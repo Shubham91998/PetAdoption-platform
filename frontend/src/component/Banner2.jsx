@@ -216,7 +216,7 @@ const Banner2 = () => {
                 {/* Image Info Badge */}
                 <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg animate-pulse flex items-center gap-1.5">
                   <Heart className="w-3 h-3 fill-white" />
-                  10K+ Adoptions
+                  #Adoptions
                 </div>
 
                 {/* Hover hint */}

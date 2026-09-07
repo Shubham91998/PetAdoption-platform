@@ -74,7 +74,7 @@ const Frequently = () => {
                     <div className="mt-4 flex flex-wrap justify-center gap-3">
                         <span className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm border border-green-200">
                             <Heart className="w-4 h-4 fill-green-500" />
-                            Trusted by 10K+ adopters
+                            Trusted by #adopters
                         </span>
                         <span className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm border border-blue-200">
                             <MessageCircle className="w-4 h-4" />

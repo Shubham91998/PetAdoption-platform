@@ -10,12 +10,12 @@ const Banner = () => {
     {
       title: "Find Your Perfect Companion",
       subtitle: "Every Pet Deserves a Good Home. #AdoptLove",
-      badge: "🐾 10K+ Happy Adoptions",
+      badge: "🐾",
     },
     {
       title: "Give a Pet a Second Chance",
       subtitle: "Your love can change a life forever. #AdoptDontShop",
-      badge: "❤️ 5K+ Pets Rescued",
+      badge: "❤️ #AdoptDontShop",
     },
     {
       title: "Join the Adoption Movement",
@@ -132,7 +132,7 @@ const Banner = () => {
               </div>
               <div className="flex items-center gap-2 text-blue-200/80">
                 <PawPrint className="w-4 h-4" />
-                <span className="text-sm">10K+ Pets Adopted</span>
+                <span className="text-sm">#Pets Adopted</span>
               </div>
             </div>
           </div>

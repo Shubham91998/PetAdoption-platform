@@ -241,7 +241,7 @@ const Petlist = () => {
               <p className="text-sm text-slate-500">Pets Available</p>
             </div>
             <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 text-center">
-              <div className="text-3xl font-bold text-indigo-600">10K+</div>
+              <div className="text-3xl font-bold text-indigo-600">#</div>
               <p className="text-sm text-slate-500">Happy Adoptions</p>
             </div>
             <div className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 text-center">
